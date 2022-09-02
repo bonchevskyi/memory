@@ -1,5 +1,5 @@
 # Memory <br />
-<img src = "https://i.postimg.cc/c13LjYCX/preview-memory.png" alt = "memory" style = "width:100%;"/><br />
+<img src = "https://i.postimg.cc/c13LjYCX/preview-mdemory.png" alt = "memory" style = "width:100%;"/><br />
 
 # <h2>🟢 Live Demo</h2>
 <a href = "https://memory-rb.netlify.app/" target= "_blank">LIVE DEMO</a>
