@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const SettingsDiv = styled(motion.div)`
-  //border: 2px solid blue;
   width: clamp(50%, 700px, 90%);
   height: min(50%, 500px);
   background-color: coral;
@@ -21,7 +20,6 @@ export const SettingsDiv = styled(motion.div)`
 `;
 
 export const GridDiv = styled(motion.div)`
-  //border: 1px solid red;
   display: grid;
   grid-template-columns: repeat(2, auto);
   width: clamp(50%, 700px, 90%);
@@ -41,8 +39,6 @@ export const SetDiv = styled(motion.div)`
   width: clamp(50%, 200px, 100%);
 
   height: fit-content;
-  //background-color: #1b5c3e;
-  //border: 1px solid yellow;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -66,9 +62,7 @@ export const SetDiv = styled(motion.div)`
 
   .radio-label:hover,
   .radio-label:focus-within {
-    //background: #282828;
     background: rgba(40, 40, 40, 0.5);
-    //opacity: 0.5;
   }
 
   .radio-input {
@@ -92,15 +86,12 @@ export const SetDiv = styled(motion.div)`
 
   .radio-design::before {
     content: "";
-
     display: inline-block;
     width: inherit;
     height: inherit;
     border-radius: inherit;
-
     background: white;
     transform: scale(1.1);
-
     transition: 0.3s;
   }
 
@@ -122,17 +113,4 @@ export const SetDiv = styled(motion.div)`
   .radio-input:checked ~ .radio-text {
     color: white;
   }
-
-  /* p {
-    font-size: 1.2rem;
-  }
-
-  input {
-    cursor: pointer;
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
-    font-size: 5rem;
-  } */
 `;

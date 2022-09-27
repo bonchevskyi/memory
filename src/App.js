@@ -144,12 +144,6 @@ function App() {
     useState("visibleStart");
 
   const [gameDivAnimationState, setGameDivAnimationState] = useState("visible");
-
-  // const [cardsAnimationState, cycleCardsAnimationState] = useCycle(
-  //   'visible',
-  //   'transition'
-  // );
-
   const [cardsAnimationState, setCardsAnimationState] = useState("visible");
 
   const [rerender, setRerender] = useState(false);
@@ -222,25 +216,19 @@ function App() {
     setGameDivAnimationState("out");
     setTimeout(() => {
       setCardsAnimationState("visible");
-      //setCardsAnimationState('visible');
       setGameDivAnimationState("visible");
     }, 1000);
 
     playShuffle();
     setCards([]);
-    //setTurns(0);
     const shuffledCards = [...cardsImg, ...cardsImg]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
     setFirstCard(null);
     setSecondCard(null);
     setCards(shuffledCards);
-    //cycleHeaderAnimation('visibleEnd');
-    //setHeaderAnimationState('visibleEnd');
-    //setHeaderAnimationState('visibleEnd2');
     setHeaderAnimationState("visibleEnd2");
     setTimeout(() => {
-      //setHeaderAnimationState('visibleEnd2');
       setTurns(0);
     }, 1000);
   };
@@ -253,8 +241,6 @@ function App() {
       const saved = localStorage.getItem("bestScore");
       const initialValue = JSON.parse(saved);
       if (initialValue) {
-        //console.log("BEST SCORE:", bestScore);
-        //console.log("TURNS:", turns);
         if (bestScore > turns) {
           setBestScore(turns);
           localStorage.setItem("bestScore", JSON.stringify(turns));
@@ -289,8 +275,6 @@ function App() {
 
     const savedType = localStorage.getItem("cardsType");
     const initialValueType = JSON.parse(savedType);
-    //const savedSounds = localStorage.getItem('sounds');
-    //const initialValueSounds = JSON.parse(savedSounds);
 
     if (initialValueCards !== pickedCards || initialValueType !== cardsType) {
       if (pickedCards === "four") {
@@ -355,17 +339,10 @@ function App() {
       setSounds(false);
       localStorage.setItem("sounds", JSON.stringify(false));
     }
-
-    //setCards([]);
-
-    //setRerender(!rerender);
-    //setRerender((prev) => !prev);
   };
 
   const rerenderCards = () => {
-    //shuffleCards();
     setRerender(!rerender);
-    //setRerender((prev) => !prev);
   };
 
   const resetTurn = () => {
@@ -373,7 +350,6 @@ function App() {
     setSecondCard(null);
     setTurns((prevTurns) => prevTurns + 1);
     setDisabled(false);
-    //checkEnd();
   };
 
   useEffect(() => {
@@ -393,10 +369,10 @@ function App() {
     if (firstCard && secondCard) {
       setDisabled(true);
       if (firstCard.src === secondCard.src) {
+        //console.log("CARDS DO MATCH!");
         setTimeout(() => {
           playCorrect();
         }, 500);
-        //console.log("CARDS MATCHED!");
         setCards((prevCards) => {
           return prevCards.map((card) => {
             if (card.src === firstCard.src) {
@@ -432,11 +408,7 @@ function App() {
               initial="hidden"
               animate={headerAnimationState}
             >
-              <HeaderDiv
-              //className={classHeader}
-              //className='relative'
-              // className={cards.length > 0 ? 'relative' : ''}
-              >
+              <HeaderDiv>
                 <h1>Memory</h1>
                 <h1>Match</h1>
 

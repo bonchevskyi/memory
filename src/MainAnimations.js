@@ -1,23 +1,23 @@
 export const headerVariants = {
   hidden: {
     opacity: 0,
-    y: '-100vh',
+    y: "-100vh",
   },
   visibleStart: {
     opacity: 1,
-    y: '30vh',
+    y: "30vh",
     transition: {
       delay: 0.5,
       duration: 1,
-      ease: 'easeInOut',
+      ease: "easeInOut",
     },
   },
   visibleEnd: {
     opacity: 1,
-    y: '80%',
+    y: "80%",
     transition: {
       duration: 1,
-      ease: 'easeInOut',
+      ease: "easeInOut",
     },
   },
   visibleEnd2: {
@@ -25,7 +25,7 @@ export const headerVariants = {
     y: 0,
     transition: {
       duration: 1,
-      ease: 'easeInOut',
+      ease: "easeInOut",
     },
   },
 };
@@ -42,7 +42,6 @@ export const gameDivVariants = {
     transition: {
       delay: 0.5,
       duration: 1,
-      //delayChildren: 1,
     },
   },
   out: {
@@ -63,7 +62,7 @@ export const gameDivVariants = {
 
 export const buttonVariants = {
   hidden: {
-    y: '100vh',
+    y: "100vh",
     opacity: 0,
   },
   visible: {
@@ -71,13 +70,11 @@ export const buttonVariants = {
     opacity: 1,
     x: [0, -10, 10, 0],
     transition: {
-      // delay: 2,
       duration: 2,
     },
   },
   hover: {
     scale: 1.1,
-    // backgroundColor: '#1b5c3e',
     transition: {
       repeat: Infinity,
       repeatType: "mirror",

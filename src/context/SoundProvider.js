@@ -1,14 +1,13 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 const SoundContext = createContext({});
 
 export const SoundProvider = ({ children }) => {
   const [sounds, setSounds] = useState(() => {
-    const json = localStorage.getItem('sounds');
+    const json = localStorage.getItem("sounds");
     const saved = JSON.parse(json);
-    //return saved || {};
     if (json === null) {
-      localStorage.setItem('sounds', JSON.stringify(true));
+      localStorage.setItem("sounds", JSON.stringify(true));
       return true;
     } else {
       return saved;
