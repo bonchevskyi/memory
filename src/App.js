@@ -86,38 +86,35 @@ function App() {
   });
 
   const [cardsImg, setCardsImg] = useState(() => {
-    const saved = localStorage.getItem("cardsSet");
-    const initialValue = JSON.parse(saved);
+    const savedValue = JSON.parse(localStorage.getItem("cardsSet"));
+    const savedType = JSON.parse(localStorage.getItem("cardsType")) || "shapes";
 
-    const savedType = localStorage.getItem("cardsType");
-    const initialTypeValue = JSON.parse(savedType) || "shapes";
-
-    if (initialTypeValue === "shapes") {
-      if (initialValue === "four") {
+    if (savedType === "shapes") {
+      if (savedValue === "four") {
         return cardsShapesImgFour;
-      } else if (initialValue === "six") {
+      } else if (savedValue === "six") {
         return cardsShapesImgSix;
-      } else if (initialValue === "eight") {
+      } else if (savedValue === "eight") {
         return cardsShapesImgEight;
       } else {
         return cardsShapesImgSix;
       }
-    } else if (initialTypeValue === "animals") {
-      if (initialValue === "four") {
+    } else if (savedType === "animals") {
+      if (savedValue === "four") {
         return cardsAnimalsImgFour;
-      } else if (initialValue === "six") {
+      } else if (savedValue === "six") {
         return cardsAnimalsImgSix;
-      } else if (initialValue === "eight") {
+      } else if (savedValue === "eight") {
         return cardsAnimalsImgEight;
       } else {
         return cardsAnimalsImgSix;
       }
-    } else if (initialTypeValue === "letters") {
-      if (initialValue === "four") {
+    } else if (savedType === "letters") {
+      if (savedValue === "four") {
         return cardsLettersImgFour;
-      } else if (initialValue === "six") {
+      } else if (savedValue === "six") {
         return cardsLettersImgSix;
-      } else if (initialValue === "eight") {
+      } else if (savedValue === "eight") {
         return cardsLettersImgEight;
       } else {
         return cardsLettersImgSix;

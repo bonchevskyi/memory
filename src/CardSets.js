@@ -67,7 +67,6 @@ export const cardsLettersImgSix = [
   { src: "/images/letters/O.png", matched: false },
   { src: "/images/letters/M.png", matched: false },
   { src: "/images/letters/A.png", matched: false },
-  ,
   { src: "/images/letters/N.png", matched: false },
   { src: "/images/letters/B.png", matched: false },
 ];
@@ -77,7 +76,6 @@ export const cardsLettersImgEight = [
   { src: "/images/letters/O.png", matched: false },
   { src: "/images/letters/M.png", matched: false },
   { src: "/images/letters/A.png", matched: false },
-  ,
   { src: "/images/letters/N.png", matched: false },
   { src: "/images/letters/B.png", matched: false },
   { src: "/images/letters/C.png", matched: false },
