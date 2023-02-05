@@ -1,10 +1,9 @@
-import styled from "styled-components";
-import { motion } from "framer-motion";
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const CardMain = styled(motion.div)`
   position: relative;
   margin: 0 auto;
-
   cursor: pointer;
 
   img {

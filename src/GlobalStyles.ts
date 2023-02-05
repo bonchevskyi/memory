@@ -1,5 +1,5 @@
-import styled, { createGlobalStyle } from "styled-components";
-import { motion } from "framer-motion";
+import styled, { createGlobalStyle } from 'styled-components';
+import { motion } from 'framer-motion';
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -86,7 +86,7 @@ export const Btn = styled(motion.button)`
   margin: 10px 5px;
 
   &:hover {
-    background: ${(props) => (props.hovercolor ? props.hovercolor : "none")};
+    background: ${(props) => (props.hovercolor ? props.hovercolor : 'none')};
   }
 `;
 
@@ -104,11 +104,11 @@ export const ModalButton = styled(motion.button)`
   cursor: pointer;
   font-size: 1em;
   margin-top: auto;
-  margin-bottom: 5px;
+  margin-bottom: 1rem;
   bottom: 0;
 
   &:hover {
-    background: ${(props) => (props.hovercolor ? props.hovercolor : "none")};
+    background: ${(props) => (props.hovercolor ? props.hovercolor : 'none')};
   }
 `;
 

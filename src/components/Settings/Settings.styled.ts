@@ -1,18 +1,21 @@
-import styled from "styled-components";
-import { motion } from "framer-motion";
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const SettingsDiv = styled(motion.div)`
   width: clamp(50%, 700px, 90%);
   height: min(50%, 500px);
   background-color: coral;
   color: white;
-
   margin: auto;
   padding: 0 2rem;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h1 {
+    padding: 1rem 0;
+  }
 
   @media screen and (max-width: 768px) {
     height: max-content;
@@ -37,12 +40,20 @@ export const GridDiv = styled(motion.div)`
 export const SetDiv = styled(motion.div)`
   width: 200px;
   width: clamp(50%, 200px, 100%);
-
   height: fit-content;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  p {
+    padding: 1rem;
+    text-align: center;
+    background-color: black;
+    /* box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 1); */
+    border-radius: 12px;
+    min-width: 200px;
+  }
 
   @media screen and (max-width: 768px) {
     margin: 10px auto;
@@ -51,11 +62,9 @@ export const SetDiv = styled(motion.div)`
   .radio-label {
     display: flex;
     align-items: center;
-
     border-radius: 100px;
     padding: 14px 16px;
     margin: 5px 0;
-
     cursor: pointer;
     transition: 0.3s;
   }
@@ -85,7 +94,7 @@ export const SetDiv = styled(motion.div)`
   }
 
   .radio-design::before {
-    content: "";
+    content: '';
     display: inline-block;
     width: inherit;
     height: inherit;

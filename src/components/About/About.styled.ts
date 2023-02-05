@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { motion } from "framer-motion";
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const AboutDiv = styled(motion.div)`
+const AboutDiv = styled(motion.div)`
   width: clamp(50%, 700px, 90%);
   height: min(50%, 500px);
   background-color: gray;
@@ -13,6 +13,10 @@ export const AboutDiv = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h1 {
+    padding: 1rem 0;
+  }
 
   p {
     margin: auto;
@@ -28,3 +32,5 @@ export const AboutDiv = styled(motion.div)`
     }
   }
 `;
+
+export default AboutDiv;

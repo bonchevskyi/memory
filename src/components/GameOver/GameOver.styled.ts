@@ -14,6 +14,10 @@ export const GameOverDiv = styled(motion.div)`
   flex-direction: column;
   align-items: center;
 
+  h1 {
+    padding: 1rem 0;
+  }
+
   p {
     display: flex;
     height: 500px;
