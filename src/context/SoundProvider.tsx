@@ -1,7 +1,11 @@
 import { createContext, useState } from 'react';
 
+interface Props {
+    children: React.ReactNode,
+}
+
 const useValue = () => {
-    const [sounds, setSounds] = useState<T>(() => {
+    const [sounds, setSounds] = useState(() => {
         const saved = JSON.parse(localStorage.getItem('sounds'));
         if (saved) {
             localStorage.setItem('sounds', JSON.stringify(true));
@@ -18,9 +22,9 @@ const useValue = () => {
 
 export const SoundContext = createContext({} as ReturnType<typeof useValue>);
 
-export function SoundProvider({ children }) {
+export function SoundProvider({ children }: Props) {
     return (
-        <SoundContext.Provider value={useValue()}>{children}</SoundContext.Provider>
+        <SoundContext.Provider value={useValue()}>{ children }</SoundContext.Provider>
     );
 }
 

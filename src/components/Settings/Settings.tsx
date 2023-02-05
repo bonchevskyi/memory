@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import useSound from 'use-sound';
 import useSounds from 'hooks/useSounds';
 import EnumCardNumber from 'enums/EnumCardNumber';
 import Backdrop from 'components/Backdrop/Backdrop';
@@ -9,23 +8,36 @@ import { ModalButton } from 'GlobalStyles';
 import EnumCardType from 'enums/EnumCardType';
 import { GridDiv, SettingsDiv, SetDiv } from './Settings.styled';
 
+interface Props {
+    handleClose(): void,
+    handleCardsPool(val: string): void,
+    handleCardsType(val: string): void,
+    handleSettingsSave(): void,
+}
+
 function Settings({
     handleClose,
     handleCardsPool,
     handleCardsType,
     handleSettingsSave,
-}) {
+}: Props) {
     const { sounds } = useSounds();
 
-    const [playHover] = useSound(hoverSound, {
-        volume: 0.15,
-        soundEnabled: sounds,
-    });
+    const playHover = () => {
+        if (sounds) {
+            const sound = new Audio(hoverSound);
+            sound.volume = 0.15;
+            sound.play();
+        }
+    };
 
-    const [playClick] = useSound(mouseClickSound, {
-        volume: 0.05,
-        soundEnabled: sounds,
-    });
+    const playClick = () => {
+        if (sounds) {
+            const sound = new Audio(mouseClickSound);
+            sound.volume = 0.05;
+            sound.play();
+        }
+    };
 
     const handleRadioCardsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         handleCardsPool(e.target.value);
@@ -98,7 +110,6 @@ function Settings({
               exit="exit"
             >
                 <h1>Settings</h1>
-                {/* <p>Here are settings!</p> */}
                 <GridDiv>
                     <SetDiv onChange={handleRadioCardsChange}>
                         <p>Cards in pool:</p>
@@ -175,9 +186,9 @@ function Settings({
                 </GridDiv>
 
                 <ModalButton
-                  onMouseDown={playClick}
-                  onMouseEnter={playHover}
-                  hovercolor="rgba(40, 40, 40, 0.5)"
+                  onMouseDown={() => playClick()}
+                  onMouseEnter={() => playHover()}
+                  hoverColor="rgba(40, 40, 40, 0.5)"
                   onClick={handleClick}
                 >
                     Save &amp; Exit

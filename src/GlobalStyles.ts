@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
+import { Props } from 'types';
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -70,7 +71,7 @@ export const HeaderDiv = styled(motion.div)`
   }
 `;
 
-export const Btn = styled(motion.button)`
+export const Btn = styled(motion.button)<Props>`
   background: none;
   display: flex;
   width: 200px;
@@ -86,11 +87,11 @@ export const Btn = styled(motion.button)`
   margin: 10px 5px;
 
   &:hover {
-    background: ${(props) => (props.hovercolor ? props.hovercolor : 'none')};
+    background: ${(props) => (props.hoverColor ? props.hoverColor : 'none')};
   }
 `;
 
-export const ModalButton = styled(motion.button)`
+export const ModalButton = styled(motion.button)<Props>`
   background: none;
   display: flex;
   width: 200px;
@@ -108,7 +109,7 @@ export const ModalButton = styled(motion.button)`
   bottom: 0;
 
   &:hover {
-    background: ${(props) => (props.hovercolor ? props.hovercolor : 'none')};
+    background: ${(props) => (props.hoverColor ? props.hoverColor : 'none')};
   }
 `;
 

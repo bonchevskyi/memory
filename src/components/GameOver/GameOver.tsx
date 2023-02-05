@@ -1,17 +1,25 @@
-import useSound from 'use-sound';
 import useSounds from 'hooks/useSounds';
 import Backdrop from 'components/Backdrop/Backdrop';
 import mouseClickSound from 'assets/sounds/mouseclick.mp3';
 import { ModalButton } from 'GlobalStyles';
 import { ButtonsWrap, GameOverDiv } from './GameOver.styled';
 
-function GameOver({ handleClose, turns, newGame }) {
+interface Props {
+    handleClose(): void,
+    newGame(): void,
+    turns: number,
+}
+
+function GameOver({ handleClose, newGame, turns }: Props) {
     const { sounds } = useSounds();
 
-    const [playClick] = useSound(mouseClickSound, {
-        volume: 0.05,
-        soundEnabled: sounds,
-    });
+    const playClick = () => {
+        if (sounds) {
+            const sound = new Audio(mouseClickSound);
+            sound.volume = 0.05;
+            sound.play();
+        }
+    };
 
     const dropIn = {
         hidden: {
@@ -53,15 +61,15 @@ function GameOver({ handleClose, turns, newGame }) {
                 </p>
                 <ButtonsWrap>
                     <ModalButton
-                      onMouseDown={playClick}
-                      hovercolor="#282828"
+                      onMouseDown={() => playClick()}
+                      hoverColor="#282828"
                       onClick={handleClose}
                     >
                         Close
                     </ModalButton>
                     <ModalButton
-                      onMouseDown={playClick}
-                      hovercolor="rgba(40, 40, 40, 0.5)"
+                      onMouseDown={() => playClick()}
+                      hoverColor="rgba(40, 40, 40, 0.5)"
                       onClick={newGame}
                     >
                         Retry

@@ -27,11 +27,6 @@
       "DOM.Iterable", 
       "ESNext"
     ],
-    "typeRoots": [      
-      "node_modules/vite",
-      "node_modules/@types",
-      "types/"
-    ],
     "include": [
       "src",
       "types",            

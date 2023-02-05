@@ -1,4 +1,6 @@
-export const headerVariants = {
+import { Variants } from 'framer-motion';
+
+export const headerVariants: Variants = {
     hidden: {
         opacity: 0,
         y: '-100vh',
@@ -30,7 +32,7 @@ export const headerVariants = {
     },
 };
 
-export const gameDivVariants = {
+export const gameDivVariants: Variants = {
     hidden: {
         opacity: 0,
         transition: {
@@ -51,16 +53,9 @@ export const gameDivVariants = {
             duration: 1,
         },
     },
-    exit: {
-    // y: '100vh',
-    // transition: {
-    //   delay: 0.5,
-    //   duration: 2,
-    // },
-    },
 };
 
-export const buttonVariants = {
+export const buttonVariants: Variants = {
     hidden: {
         y: '100vh',
         opacity: 0,
@@ -83,7 +78,7 @@ export const buttonVariants = {
     },
 };
 
-export const cardVariants = {
+export const cardVariants: Variants = {
     hidden: {
         x: 0,
         opacity: 0,
@@ -123,7 +118,7 @@ export const cardVariants = {
     },
 };
 
-export const dropIn = {
+export const dropIn: Variants = {
     hidden: {
         y: '-100vh',
         opacity: 0,
@@ -144,7 +139,7 @@ export const dropIn = {
     },
 };
 
-export const svgVariants = {
+export const svgVariants: Variants = {
     animate: {
         scale: 1.2,
         transition: {

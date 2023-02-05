@@ -50,7 +50,6 @@ export const SetDiv = styled(motion.div)`
     padding: 1rem;
     text-align: center;
     background-color: black;
-    /* box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 1); */
     border-radius: 12px;
     min-width: 200px;
   }

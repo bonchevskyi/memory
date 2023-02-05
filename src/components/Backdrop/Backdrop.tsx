@@ -1,6 +1,11 @@
 import BackdropDiv from './Backdrop.styled';
 
-function Backdrop({ children, onClick }) {
+interface Props {
+    children: React.ReactNode,
+    onClick(): void,
+}
+
+function Backdrop({ children, onClick }: Props) {
     return (
         <BackdropDiv
           className="backdrop"

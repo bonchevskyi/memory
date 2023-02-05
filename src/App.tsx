@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'styled-components';
-import useSound from 'use-sound';
 import useSounds from 'hooks/useSounds';
 import shuffleSound from 'assets/sounds/shuffle.mp3';
 import hoverSound from 'assets/sounds/hover2.mp3';
@@ -53,7 +52,6 @@ import GlobalStyles, {
 
 function App() {
     const { sounds, setSounds } = useSounds();
-    const [pickedSounds, setPickedSounds] = useState(null);
     const [cards, setCards] = useState([]);
     const [turns, setTurns] = useState(0);
     const [firstCard, setFirstCard] = useState(null);
@@ -151,35 +149,53 @@ function App() {
         return saved === 'dark' ? 'dark' : 'light';
     });
 
-    const [playShuffle] = useSound(shuffleSound, {
-        volume: 0.15,
-        soundEnabled: sounds,
-    });
+    const playShuffle = () => {
+        if (sounds) {
+            const sound = new Audio(shuffleSound);
+            sound.volume = 0.15;
+            sound.play();
+        }
+    };
 
-    const [playHover] = useSound(hoverSound, {
-        volume: 0.15,
-        soundEnabled: sounds,
-    });
+    const playHover = () => {
+        if (sounds) {
+            const sound = new Audio(hoverSound);
+            sound.volume = 0.15;
+            sound.play();
+        }
+    };
 
-    const [playClick] = useSound(mouseClickSound, {
-        volume: 0.05,
-        soundEnabled: sounds,
-    });
+    const playClick = () => {
+        if (sounds) {
+            const sound = new Audio(mouseClickSound);
+            sound.volume = 0.05;
+            sound.play();
+        }
+    };
 
-    const [playCorrect] = useSound(correctSound, {
-        volume: 0.05,
-        soundEnabled: sounds,
-    });
+    const playCorrect = () => {
+        if (sounds) {
+            const sound = new Audio(correctSound);
+            sound.volume = 0.05;
+            sound.play();
+        }
+    };
 
-    const [playWrong] = useSound(wrongSound, {
-        volume: 0.05,
-        soundEnabled: sounds,
-    });
+    const playWrong = () => {
+        if (sounds) {
+            const sound = new Audio(wrongSound);
+            sound.volume = 0.05;
+            sound.play();
+        }
+    };
 
-    const [playEnd] = useSound(gameEndedSound, {
-        volume: 0.05,
-        soundEnabled: sounds,
-    });
+    const playEnd = () => {
+        if (sounds) {
+            const sound = new Audio(gameEndedSound);
+            sound.volume = 0.05;
+            sound.play();
+        }
+    };
 
     const toggleTheme = () => {
         playClick();
@@ -202,8 +218,6 @@ function App() {
             localStorage.setItem('sounds', JSON.stringify(true));
         }
     };
-
-    // shuffle cards for new game
 
     const shuffleCards = () => {
         setCardsAnimationState('out');
@@ -261,10 +275,6 @@ function App() {
 
     const handleCardsType = (val) => {
         setCardsType(val);
-    };
-
-    const handleSounds = (val) => {
-        setPickedSounds(val);
     };
 
     const rerenderCards = () => {
@@ -337,19 +347,10 @@ function App() {
                 rerenderCards();
             }
         }
-
-        if (pickedSounds === 'sound-on') {
-            setSounds(true);
-            localStorage.setItem('sounds', JSON.stringify(true));
-        }
-        if (pickedSounds === 'sound-off') {
-            setSounds(false);
-            localStorage.setItem('sounds', JSON.stringify(false));
-        }
     };
 
     useEffect(() => {
-        if (rerender === true) {
+        if (rerender) {
             shuffleCards();
             setRerender(false);
         }
@@ -405,7 +406,7 @@ function App() {
                             <Btn
                               onMouseDown={playClick}
                               onMouseEnter={playHover}
-                              hovercolor="rgba(27, 92, 62, 1)"
+                              hoverColor="rgba(27, 92, 62, 1)"
                               variants={buttonVariants}
                               initial="hidden"
                               animate="visible"
@@ -417,7 +418,7 @@ function App() {
                             <Btn
                               onMouseDown={playClick}
                               onMouseEnter={playHover}
-                              hovercolor="coral"
+                              hoverColor="coral"
                               variants={buttonVariants}
                               initial="hidden"
                               animate="visible"
@@ -427,9 +428,9 @@ function App() {
                                 Settings
                             </Btn>
                             <Btn
-                              onMouseDown={playClick}
-                              onMouseEnter={playHover}
-                              hovercolor="grey"
+                              onMouseDown={() => playClick()}
+                              onMouseEnter={() => playHover()}
+                              hoverColor="grey"
                               variants={buttonVariants}
                               initial="hidden"
                               animate="visible"
@@ -484,9 +485,7 @@ function App() {
                                           card={card}
                                           handlePick={handlePick}
                                           flipped={
-                                                card === firstCard
-                          || card === secondCard
-                          || card.matched
+                                                card === firstCard || card === secondCard || card.matched
                                             }
                                           disabled={disabled}
                                           cardsAnimationState={cardsAnimationState}
@@ -507,13 +506,7 @@ function App() {
                               handleSettingsSave={handleSettingsSave}
                               handleCardsPool={handleCardsPool}
                               handleCardsType={handleCardsType}
-                              handleSounds={handleSounds}
-                              settings={settings}
                               handleClose={() => setSettings(false)}
-                              newGame={() => {
-                                    setSettings(false);
-                                    shuffleCards();
-                                }}
                             />
                         )}
                     </AnimatePresence>
@@ -525,7 +518,6 @@ function App() {
                     >
                         {gameOver && (
                             <GameOver
-                              gameOver={gameOver}
                               handleClose={() => setGameOver(false)}
                               turns={turns}
                               newGame={() => {
@@ -542,7 +534,7 @@ function App() {
                       onExitComplete={() => null}
                     >
                         {about && (
-                            <About about={about} handleClose={() => setAbout(false)} />
+                            <About handleClose={() => setAbout(false)} />
                         )}
                     </AnimatePresence>
                     <Footer>

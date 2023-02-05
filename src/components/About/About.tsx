@@ -1,4 +1,3 @@
-import useSound from 'use-sound';
 import useSounds from 'hooks/useSounds';
 import Backdrop from 'components/Backdrop/Backdrop';
 import mouseClickSound from 'assets/sounds/mouseclick.mp3';
@@ -7,18 +6,28 @@ import { dropIn } from 'components/animations';
 import { ModalButton } from 'GlobalStyles';
 import AboutDiv from './About.styled';
 
-function About({ handleClose }) {
+interface Props {
+    handleClose(): void,
+}
+
+function About({ handleClose }: Props) {
     const { sounds } = useSounds();
 
-    const [playClick] = useSound(mouseClickSound, {
-        volume: 0.05,
-        soundEnabled: sounds,
-    });
+    const playHover = () => {
+        if (sounds) {
+            const sound = new Audio(hoverSound);
+            sound.volume = 0.15;
+            sound.play();
+        }
+    };
 
-    const [playHover] = useSound(hoverSound, {
-        volume: 0.15,
-        soundEnabled: sounds,
-    });
+    const playClick = () => {
+        if (sounds) {
+            const sound = new Audio(mouseClickSound);
+            sound.volume = 0.05;
+            sound.play();
+        }
+    };
 
     return (
         <Backdrop onClick={handleClose}>
@@ -61,7 +70,7 @@ function About({ handleClose }) {
                 <ModalButton
                   onMouseDown={playClick}
                   onMouseEnter={playHover}
-                  hovercolor="rgba(40, 40, 40, 0.5)"
+                  hoverColor="rgba(40, 40, 40, 0.5)"
                   onClick={handleClose}
                 >
                     Close
